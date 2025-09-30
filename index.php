@@ -6,8 +6,13 @@ require 'controllers/BookController.php';
 
 $server = $_SERVER["REQUEST_URI"];
 
+
 if ($server == "/") {
     return HomeController::index();
+}
+
+if ($server == "/dashboard") {
+    return HomeController::home();
 }
 
 if ($server == "/book") {
@@ -15,7 +20,14 @@ if ($server == "/book") {
 }
 
 if ($server == "/auth") {
-    return AuthController::index();
+
+    $method = $_SERVER["REQUEST_METHOD"];
+
+    if ($method == "GET") {
+        return AuthController::index();
+    }
+
+    return AuthController::store();
 }
 
 return require "views/notFoundPage.php";
