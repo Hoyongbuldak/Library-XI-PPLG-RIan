@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "DASHBOARD";
+require_once "views/template/header.php";
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<div class="container rounded shadow mt-4 p-4">
     <h2>Dashboard Page</h2>
-</body>
+    <h1>WELCOME, <?= $data["full_name"] ?>!</h1>
+    <h1>ROLE, <?= $data["role"] ?></h1>
+</div>
 
-</html>
+<?php require_once "views/template/footer.php" ?>

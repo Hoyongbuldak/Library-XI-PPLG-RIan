@@ -19,6 +19,17 @@ if ($server == "/book") {
     return BookController::index();
 }
 
+if ($server == "/register") {
+
+    $method = $_SERVER["REQUEST_METHOD"];
+
+    if ($method == "GET") {
+        return AuthController::register();
+    }
+
+    return AuthController::store();
+}
+
 if ($server == "/auth") {
 
     $method = $_SERVER["REQUEST_METHOD"];
@@ -27,7 +38,7 @@ if ($server == "/auth") {
         return AuthController::index();
     }
 
-    return AuthController::store();
+    return AuthController::auth();
 }
 
 return require "views/notFoundPage.php";
