@@ -2,7 +2,6 @@
 $title = "AUTH";
 include "template/header.php";
 session_start();
-
 ?>
 
 <div class="container m-5">
@@ -53,6 +52,15 @@ session_start();
                         placeholder="fill your phone number here.."
                         id="phone"
                         name="phone">
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="">Select Role</option>
+                        <?php foreach ($data as $role) : ?>
+                            <option value="<?= $role['id'] ?>"><?= $role['role_name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary">Submit</button>

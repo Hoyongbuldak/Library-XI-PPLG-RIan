@@ -19,11 +19,12 @@ if ($server == "/book") {
     return BookController::index();
 }
 
-if ($server == "/register") {
+if ($server == "/create-member") {
 
     $method = $_SERVER["REQUEST_METHOD"];
 
     if ($method == "GET") {
+
         return AuthController::register();
     }
 

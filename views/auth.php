@@ -1,7 +1,6 @@
 <?php
 $title = "AUTH";
 include "template/header.php";
-session_start();
 
 ?>
 

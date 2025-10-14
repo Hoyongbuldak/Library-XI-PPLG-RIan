@@ -2,18 +2,19 @@
 
 require_once("Controllers.php");
 require_once("models/User.php");
+require_once("models/Role.php");
 
 class AuthController extends Controllers
 {
     static function index()
     {
         session_start();
-        $dataLogin = $_SESSION["is_login"];
-        $id = $_SESSION["id"];
-        $full_name = $_SESSION["full_name"];
-        $email = $_SESSION["email"];
-        $role = $_SESSION["role"];
-        $phone = $_SESSION["phone"];
+        $dataLogin = $_SESSION["is_login"] ?? NULL;
+        $id = $_SESSION["id"] ?? NULL;
+        $full_name = $_SESSION["full_name"] ?? NULL;
+        $email = $_SESSION["email"] ?? NULL;
+        $role = $_SESSION["role"] ?? NULL;
+        $phone = $_SESSION["phone"] ?? NULL;
 
         if (
             isset($dataLogin) &&
@@ -31,7 +32,9 @@ class AuthController extends Controllers
 
     static function register()
     {
-        return self::view("views/register.php");
+        $roles = new Role();
+        $data = $roles->getRole();
+        return self::view("views/register.php", $data);
     }
 
     static function auth()
