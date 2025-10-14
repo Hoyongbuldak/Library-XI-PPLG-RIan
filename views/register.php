@@ -22,7 +22,7 @@ session_start();
             <?php session_unset();
             endif ?>
 
-            <form method="post" action="/register">
+            <form method="post" action="/create-member">
                 <div class="mb-3">
                     <label for="full_name" class="form-label">Full Name</label>
                     <input

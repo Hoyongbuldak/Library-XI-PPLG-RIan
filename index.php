@@ -19,6 +19,10 @@ if ($server == "/book") {
     return BookController::index();
 }
 
+if ($server == "/create-book") {
+    return BookController::create();
+}
+
 if ($server == "/create-member") {
 
     $method = $_SERVER["REQUEST_METHOD"];
@@ -29,6 +33,10 @@ if ($server == "/create-member") {
     }
 
     return AuthController::store();
+}
+
+if ($server == "/logout") {
+    return AuthController::destroy();
 }
 
 if ($server == "/auth") {

@@ -50,7 +50,8 @@ class User extends Model
         $password,
         $full_name,
         $phone,
-        $email
+        $email,
+        $role
     ) {
         try {
             $hashed_password = password_hash("$password", PASSWORD_DEFAULT);
@@ -58,10 +59,15 @@ class User extends Model
             $data = "INSERT INTO users(full_name, email, password, phone) VALUES('$full_name', '$email', '$hashed_password', '$phone')";
 
             $query->exec($data);
-            session_start();
-            $_SESSION['success'] = "Register Success!";
 
-            header('Location: /register');
+            $dataRole = "INSERT INTO user_role(user_id, role_id) VALUES(LAST_INSERT_ID(), $role)";
+
+            $query->exec($dataRole);
+
+            session_start();
+            $_SESSION['success'] = "Create member success!";
+
+            header('Location: /create-member');
         } catch (\Throwable $th) {
             throw $th;
         }

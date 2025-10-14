@@ -29,10 +29,14 @@ class HomeController extends Controllers
             $full_name = $_SESSION['full_name'];
             $role = $_SESSION['role'];
 
-            return self::view("views/admin/dashboard.php", [
-                'full_name' => $full_name,
-                'role' => $role
-            ]);
+            if ($role === 'admin') {
+                return self::view("views/admin/dashboard.php", [
+                    'full_name' => $full_name,
+                    'role' => $role
+                ]);
+            }
+
+            return header("Location: http://localhost:8000/book");
         }
         header("Location: http://localhost:8000/auth");
     }

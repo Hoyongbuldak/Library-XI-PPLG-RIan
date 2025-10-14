@@ -1,11 +1,15 @@
 <?php
 $title = "Book";
-include "template/header.php" ?>
+include "template/header.php";
+?>
 
 <div class="container mt-5 shadow p-3">
     <div class="d-flex justify-content-between">
-        <p>List Book</p>
         <a href="/">Back To Home</a>
+        <p>List Book</p>
+        <?php if ($isLogin) : ?>
+            <a href="/logout">Logout</a>
+        <?php endif; ?>
     </div>
     <div class="row">
         <div class="col-12 col-md-4">

@@ -61,11 +61,12 @@ class AuthController extends Controllers
             $_REQUEST["full_name"] == "" ||
             $_REQUEST["email"] == "" ||
             $_REQUEST["password"] == "" ||
-            $_REQUEST["phone"] == ""
+            $_REQUEST["phone"] == "" ||
+            $_REQUEST["role"] == ""
         ) {
             session_start();
             $_SESSION['ERROR'] = "all fields must be filled!";
-            return header("Location: http://localhost:8000/auth");
+            return header("Location: http://localhost:8000/create-member");
         }
 
         $user = new User;
@@ -73,7 +74,16 @@ class AuthController extends Controllers
             $_REQUEST["password"],
             $_REQUEST["full_name"],
             $_REQUEST['phone'],
-            $_REQUEST['email']
+            $_REQUEST['email'],
+            $_REQUEST['role']
         );
+    }
+
+    static public function destroy()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        return header("Location: http://localhost:8000/auth");
     }
 }
